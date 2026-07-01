@@ -1,14 +1,34 @@
 # Global Trend Radar / 全球风向盘
 
+[![Deploy to GitHub Pages](https://github.com/xsgteamx/global-trend-radar/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/xsgteamx/global-trend-radar/actions/workflows/deploy-pages.yml)
+
 一个用于快速观察全球趋势变化的轻量仪表盘。
 
 它不是新闻日报、热点榜或长篇报告，而是一个“世界观察窗”：
 
 > 信息少，但是凝练；打开首页 30 秒内看懂世界正在往哪偏。
 
+## 在线部署
+
+本项目可通过 GitHub Pages 部署。
+
+默认项目页地址：
+
+https://xsgteamx.github.io/global-trend-radar/
+
+每次推送到 `main` 后，GitHub Actions 会自动构建并发布 `dist`。
+
+注意：当前 `vite.config.ts` 使用 `base: '/global-trend-radar/'`，适配 GitHub Project Pages。如果绑定自定义域名，需要改为 `base: '/'`。
+
+如果仓库还没有启用 Pages，需要在 GitHub UI 中设置：
+
+```text
+Settings → Pages → Build and deployment → Source → GitHub Actions
+```
+
 ## 当前数据供给方式
 
-V0.2 的数据源是 ChatGPT。
+V0.2 起，数据源是 ChatGPT。
 
 GitHub 项目负责展示和存档，ChatGPT 负责观察、判断、总结，并生成可落库的 JSON 数据。
 
@@ -61,6 +81,12 @@ npm run dev
 
 ```bash
 pnpm run build
+```
+
+## 本地预览生产构建
+
+```bash
+pnpm run preview
 ```
 
 ## 数据入口
