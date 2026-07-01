@@ -10,6 +10,21 @@ Generate `data/today.json` for a global macro trend dashboard.
 
 The product is not a news list, not a hot topic ranking, and not a long report. It is a concise "world observation window" that lets a reader understand the day's main global direction within 30 seconds.
 
+## Required Pre-Update Archive Step
+
+Before replacing `data/today.json`, preserve history.
+
+Daily update order:
+
+1. Read the existing `data/today.json`.
+2. Read its `date` field.
+3. Save that exact existing JSON to `data/history/<date>.json` before overwriting `today.json`.
+4. Generate the new JSON for the new date.
+5. Write the new JSON to `data/today.json`.
+6. Save the same new JSON to `data/history/<new date>.json`.
+
+Never overwrite `data/today.json` without first archiving the previous content. The history filename must match the JSON `date` field. If the target history file already exists and differs from the current `today.json`, stop for manual review instead of silently overwriting history.
+
 ## Required Shape
 
 ```json
@@ -62,14 +77,16 @@ Each window must use this structure:
 
 - Each observation window keeps only one daily trend judgment.
 - `title` must be short, concrete, and judgmental.
-- `summary` must be one concise sentence.
-- `keywords` must contain 3 to 6 short terms.
+- `summary` should be a compact paragraph, not a long report.
+- Recommended `summary` length: 80 to 180 Chinese characters.
+- `keywords` should contain 5 to 8 short terms.
 - `status` must be one of `high`, `rising`, `accelerating`, or `seed`.
 - `headline` must be a highly compressed total judgment of the world today.
-- `summary` explains the headline without becoming a long report.
+- Top-level `summary` explains the headline without becoming a long report.
 - `keyChanges` must use `{ "from": "...", "to": "..." }`.
 - `keyChanges` should contain 3 to 7 items.
 - `statusGroups` must use the four required status keys.
+- Each `statusGroups` category should contain around 20 representative short tags.
 - Keep a global perspective; do not only follow the user's personal interests.
 - Prefer durable macro shifts over one-day noise.
 - Do not invent precise facts that would require citations unless you are confident they are broadly supported by public information.
