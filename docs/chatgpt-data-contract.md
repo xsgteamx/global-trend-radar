@@ -7,14 +7,21 @@ ChatGPT is the current data supplier. The app reads one structured JSON file, `d
 ## Data Flow
 
 ```text
-ChatGPT generates today's global trend radar JSON
+Before generating new data:
+read current data/today.json
         ↓
-Write the JSON to data/today.json
+archive the current file to data/history/<current date>.json
         ↓
-Copy the same JSON to data/history/YYYY-MM-DD.json
+ChatGPT generates the new daily global trend radar JSON
         ↓
-The frontend imports data/today.json
+write the new JSON to data/today.json
+        ↓
+copy the new JSON to data/history/<new date>.json
+        ↓
+the frontend imports data/today.json
 ```
+
+Important: never overwrite `data/today.json` without first preserving the previous version in `data/history/YYYY-MM-DD.json`.
 
 ## Top-Level Fields
 
@@ -67,8 +74,9 @@ Required constraints:
 - The 8th window is `今日盲区`, used for one important global signal the user may overlook.
 - Each window must contain only one main trend judgment for the day.
 - `title` should be short and judgmental, not a neutral topic label.
-- `summary` should be one concise sentence.
-- `keywords` must contain 3 to 6 items.
+- `summary` can be richer than a single short sentence, but should stay readable as one compact paragraph.
+- Recommended `summary` length: 80 to 180 Chinese characters.
+- `keywords` should contain 5 to 8 items unless the frontend contract is changed.
 
 ## Status Enum
 
@@ -91,6 +99,13 @@ Required constraints:
 ```
 
 Each status group should contain short tags, not sentences.
+
+Recommended rule for richer daily output:
+
+- Each status group should contain around 20 representative tags.
+- Tags should be short and scannable.
+- Avoid duplicate or near-duplicate tags in the same group.
+- Do not put long explanations inside `statusGroups`; explanations belong in `windows.summary`.
 
 ## Key Changes
 
@@ -121,10 +136,20 @@ Rules:
 
 ## Archive Rule
 
-Every time `data/today.json` is updated, copy the exact same content to:
+Historical data must be preserved before every update.
 
-```text
-data/history/YYYY-MM-DD.json
-```
+Daily update order:
 
-The archive date must match the `date` field in the JSON.
+1. Read current `data/today.json`.
+2. Inspect its `date` field.
+3. Write that exact current JSON to `data/history/<date>.json` before replacing it.
+4. Generate the new daily JSON.
+5. Write the new JSON to `data/today.json`.
+6. Also write the same new JSON to `data/history/<new date>.json`.
+
+Rules:
+
+- Never overwrite `data/today.json` directly without first archiving the current file.
+- The history filename must match the `date` field inside the JSON.
+- If `data/history/<date>.json` already exists and differs from the current `today.json`, create a conflict note or stop for manual review rather than silently overwriting valuable history.
+- History files are intended for future features such as reading prior radar JSON by date.
