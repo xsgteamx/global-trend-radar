@@ -75,8 +75,29 @@ Required constraints:
 - Each window must contain only one main trend judgment for the day.
 - `title` should be short and judgmental, not a neutral topic label.
 - `summary` can be richer than a single short sentence, but should stay readable as one compact paragraph.
-- Recommended `summary` length: 80 to 180 Chinese characters.
+- `summary` may include representative hotlist attention signals, but those signals must be translated into structural trend language.
+- Recommended `summary` length: 90 to 200 Chinese characters.
 - `keywords` should contain 5 to 8 items unless the frontend contract is changed.
+
+## Hotlist Fusion Rule
+
+Hotlist sources are attention signals, not final evidence.
+
+Use hotlists to detect what people are searching, discussing, watching, sharing, doubting, or worrying about today. Then translate those signals into the 8 observation windows.
+
+Recommended card composition:
+
+- 70% structural judgment.
+- 20% hotlist attention signal.
+- 10% concrete example.
+
+Rules:
+
+- Do not copy raw hotlist titles into cards.
+- Do not turn cards into a news list.
+- Do not let celebrity, entertainment, or one-platform noise dominate unless it reveals a broader cultural, consumer, social, platform, or governance signal.
+- Do not add fields such as `attentionSignals` until the frontend intentionally supports them.
+- Keep hotlist evidence inside `summary`, `keywords`, `statusGroups`, or `sourcesNote` under the current contract.
 
 ## Status Enum
 
@@ -102,7 +123,7 @@ Each status group should contain short tags, not sentences.
 
 Recommended rule for richer daily output:
 
-- Each status group should contain around 20 representative tags.
+- Each status group should contain around 36 representative tags when the UI can tolerate it; otherwise keep around 20.
 - Tags should be short and scannable.
 - Avoid duplicate or near-duplicate tags in the same group.
 - Do not put long explanations inside `statusGroups`; explanations belong in `windows.summary`.
@@ -131,6 +152,7 @@ Rules:
 - Do not center the output only on the user's personal interests.
 - Keep a global perspective.
 - Prefer macro direction, system pressure, and durable signals.
+- Use hotlist signals to add today's public attention and ordinary-person perspective.
 - Keep the frontend readable within 30 seconds.
 - If a trend is uncertain, express it as `seed` rather than overstating confidence.
 
