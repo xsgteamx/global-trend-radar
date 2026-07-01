@@ -25,6 +25,27 @@ Daily update order:
 
 Never overwrite `data/today.json` without first archiving the previous content. The history filename must match the JSON `date` field. If the target history file already exists and differs from the current `today.json`, stop for manual review instead of silently overwriting history.
 
+## Hotlist Fusion Rule
+
+Use mainstream hotlists as attention signals, not as final conclusions.
+
+Daily generation should sample hotlist entrances such as TopHub, Baidu, Zhihu, Bilibili, Douyin, Weibo, Google Trends, TikTok, Reddit, Hacker News, GitHub Trending, Product Hunt, Reuters/AP/BBC and other available sources.
+
+Hotlist topics should be translated into trend language before entering the JSON.
+
+Correct style:
+
+- `summary`: 70% structural judgment, 20% hotlist attention signal, 10% concrete example.
+- `keywords`: short trend keywords extracted from both macro sources and hotlist signals.
+- `statusGroups`: keyword index, not a news list.
+
+Incorrect style:
+
+- Do not copy raw hotlist titles into observation windows.
+- Do not let entertainment or celebrity topics dominate unless they reveal a broader cultural, consumer, social, platform, or governance signal.
+- Do not turn the product into a hot topic ranking.
+- Do not add new JSON fields for hotlist evidence unless the frontend contract is intentionally changed.
+
 ## Required Shape
 
 ```json
@@ -78,7 +99,8 @@ Each window must use this structure:
 - Each observation window keeps only one daily trend judgment.
 - `title` must be short, concrete, and judgmental.
 - `summary` should be a compact paragraph, not a long report.
-- Recommended `summary` length: 80 to 180 Chinese characters.
+- `summary` may lightly mention representative hotlist signals, but it must end as a structural trend judgment.
+- Recommended `summary` length: 90 to 200 Chinese characters.
 - `keywords` should contain 5 to 8 short terms.
 - `status` must be one of `high`, `rising`, `accelerating`, or `seed`.
 - `headline` must be a highly compressed total judgment of the world today.
@@ -86,8 +108,8 @@ Each window must use this structure:
 - `keyChanges` must use `{ "from": "...", "to": "..." }`.
 - `keyChanges` should contain 3 to 7 items.
 - `statusGroups` must use the four required status keys.
-- Each `statusGroups` category should contain around 20 representative short tags.
-- Keep a global perspective; do not only follow the user's personal interests.
+- Each `statusGroups` category should contain around 36 representative short keyword tags when the UI can tolerate it; otherwise keep around 20.
+- Keep a global perspective; do not only follow the user's personal interests or one country's hotlists.
 - Prefer durable macro shifts over one-day noise.
 - Do not invent precise facts that would require citations unless you are confident they are broadly supported by public information.
 
