@@ -1,4 +1,4 @@
-import data from '../data/sample-today.json';
+import data from '../data/today.json';
 import { RadarData } from './types';
 import { WindDashboard } from './components/WindDashboard';
 import { StatusTags } from './components/StatusTags';

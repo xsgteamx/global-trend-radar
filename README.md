@@ -6,13 +6,31 @@
 
 > 信息少，但是凝练；打开首页 30 秒内看懂世界正在往哪偏。
 
+## 当前数据供给方式
+
+V0.2 的数据源是 ChatGPT。
+
+GitHub 项目负责展示和存档，ChatGPT 负责观察、判断、总结，并生成可落库的 JSON 数据。
+
+```text
+ChatGPT 生成今日全球风向数据
+        ↓
+输出 JSON
+        ↓
+写入 repo：data/today.json
+        ↓
+复制归档：data/history/YYYY-MM-DD.json
+        ↓
+前端读取 today.json 展示首页
+```
+
 ## MVP 目标
 
 - 使用静态 JSON 驱动首页
 - 展示 7 个固定世界系统层 + 1 个动态盲区格
 - 每个观察窗只展示领域名、今日风向标题、一句话判断和关键词
 - 展示今日状态标签与“从 A 到 B”的关键变化
-- 后续可接入 GitHub Actions、LLM 或数据源自动生成每日 JSON
+- 保持前台信息少、判断明确、30 秒可读
 
 ## 世界观察窗
 
@@ -28,6 +46,13 @@
 ## 本地运行
 
 ```bash
+pnpm install
+pnpm run dev
+```
+
+如果本机使用 npm，也可以运行：
+
+```bash
 npm install
 npm run dev
 ```
@@ -35,15 +60,31 @@ npm run dev
 ## 构建
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## 数据入口
 
-编辑：
+当前前端读取：
 
 ```text
-data/sample-today.json
+data/today.json
 ```
 
-前端目前直接 import 这份 JSON。后续可替换成自动生成的每日 JSON。
+历史快照保存在：
+
+```text
+data/history/YYYY-MM-DD.json
+```
+
+## 手动更新今日数据
+
+1. 让 ChatGPT 生成今天的 JSON。
+2. 覆盖 `data/today.json`。
+3. 复制一份到 `data/history/YYYY-MM-DD.json`。
+4. 运行 `pnpm run build`。
+5. commit/push。
+
+数据字段和写作约束见 [docs/chatgpt-data-contract.md](docs/chatgpt-data-contract.md)。
+
+生成提示词模板见 [prompts/generate-today-json.md](prompts/generate-today-json.md)。

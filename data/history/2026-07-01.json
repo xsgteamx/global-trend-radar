@@ -1,0 +1,95 @@
+{
+  "date": "2026-07-01",
+  "generatedBy": "ChatGPT",
+  "version": "0.2",
+  "headline": "国家买安全，企业买自动化，普通人保现金流，AI 吃电力，社会重新寻找可信。",
+  "summary": "世界正在变得更安全化、更自动化、更成本敏感、更依赖电力，也更需要可验证的信任。",
+  "windows": [
+    {
+      "id": "world-order",
+      "icon": "🌐",
+      "name": "世界秩序",
+      "title": "安全溢价继续上升",
+      "summary": "国家和企业都在为“不确定性”买保险。",
+      "keywords": ["安全溢价", "军费", "制裁", "边境", "供应链韧性"],
+      "status": "high"
+    },
+    {
+      "id": "economy-finance",
+      "icon": "💵",
+      "name": "经济金融",
+      "title": "高成本时代还没结束",
+      "summary": "普通人和企业都更在意现金流、利率、债务和“值不值得花钱”。",
+      "keywords": ["现金流", "利率", "债务", "通胀", "消费防守"],
+      "status": "high"
+    },
+    {
+      "id": "industry-supply-chain",
+      "icon": "🏭",
+      "name": "产业供应链",
+      "title": "全球化不是消失，是绕路",
+      "summary": "供应链从“单一路径最低成本”转向“多节点、多备份、多合规”。",
+      "keywords": ["全球化绕路", "东盟", "印度制造", "墨西哥", "关键矿产"],
+      "status": "rising"
+    },
+    {
+      "id": "technology-productivity",
+      "icon": "🤖",
+      "name": "科技生产力",
+      "title": "AI 从工具变成执行层",
+      "summary": "AI 不只是聊天，而是在进入办公、开发、客服、分析和流程自动化。",
+      "keywords": ["Agent", "自动化", "工作流", "AI 审计", "本地 AI"],
+      "status": "accelerating"
+    },
+    {
+      "id": "energy-climate",
+      "icon": "⚡",
+      "name": "能源气候",
+      "title": "电力变成 AI 时代瓶颈",
+      "summary": "算力竞争背后是电网、数据中心、冷却、天然气、核电和储能竞争。",
+      "keywords": ["数据中心", "电网", "核电", "冷却", "储能"],
+      "status": "accelerating"
+    },
+    {
+      "id": "ordinary-life",
+      "icon": "🧑",
+      "name": "普通人生活",
+      "title": "消费进入价值防守",
+      "summary": "不是不消费，而是更会比价、更重视低价、健康、现金流和“别买错”。",
+      "keywords": ["低价", "平替", "二手", "现金流", "健康管理"],
+      "status": "high"
+    },
+    {
+      "id": "social-culture",
+      "icon": "🧭",
+      "name": "社会情绪文化",
+      "title": "真实连接和可信感变稀缺",
+      "summary": "AI 让内容真假更难分，社交媒体让连接变多但关系未必更强。",
+      "keywords": ["孤独", "关系贫困", "内容溯源", "身份安全", "AI 伴侣"],
+      "status": "rising"
+    },
+    {
+      "id": "blindspot",
+      "icon": "🔎",
+      "name": "今日盲区",
+      "title": "中东正在变成 AI 基础设施玩家",
+      "summary": "它不只是能源和地缘地区，也可能成为电力、资本、数据中心和 AI 投资节点。",
+      "keywords": ["中东", "数据中心", "主权基金", "能源", "AI 基建"],
+      "status": "seed"
+    }
+  ],
+  "statusGroups": {
+    "high": ["安全", "AI", "成本", "供应链", "电力", "消费防守"],
+    "rising": ["AI Agent", "可信输出", "全球化绕路", "本地 AI", "健康管理"],
+    "accelerating": ["AI 用电", "数据中心建设", "AI 工作流落地"],
+    "seed": ["AI 审计", "内容溯源", "数字身份", "气候保险", "AI 伴侣", "小团队自动化"]
+  },
+  "keyChanges": [
+    { "from": "效率优先", "to": "安全韧性" },
+    { "from": "聊天 AI", "to": "执行 AI" },
+    { "from": "互联网竞争", "to": "电力竞争" },
+    { "from": "消费升级", "to": "价值防守" },
+    { "from": "默认可信", "to": "处处验证" }
+  ],
+  "sourcesNote": "本期由 ChatGPT 基于公开信息与趋势判断生成。"
+}

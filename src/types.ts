@@ -17,9 +17,12 @@ export interface KeyChange {
 
 export interface RadarData {
   date: string;
+  generatedBy: string;
+  version: string;
   headline: string;
   summary: string;
   windows: WindWindow[];
   statusGroups: Record<Status, string[]>;
   keyChanges: KeyChange[];
+  sourcesNote: string;
 }
