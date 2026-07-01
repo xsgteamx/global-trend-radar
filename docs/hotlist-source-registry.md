@@ -19,6 +19,14 @@ Use them to answer:
 
 The final radar should still prefer macro direction, durable signals, and cross-domain interpretation.
 
+## Aggregated Hotlist Entrance
+
+| Source | Type | URL | Usage |
+| --- | --- | --- | --- |
+| 今日热榜 / TopHub | Aggregated hotlist portal | `https://tophub.today/` | Preferred first-stop entrance for scanning mainstream Chinese and international hotlists across platforms. Use it to discover cross-platform attention, then verify important topics through original platforms or hard-news sources. |
+
+TopHub should be treated as an **attention aggregator**, not as final evidence. If a topic appears on TopHub because it is high on Baidu, Zhihu, Weibo, Bilibili, Douyin, Google, or other sources, prefer tracing the topic back to the original platform or a reliable news/institutional source before turning it into a radar judgment.
+
 ## Domestic Entrances
 
 | Source | Type | URL | Usage |
@@ -48,12 +56,13 @@ The final radar should still prefer macro direction, durable signals, and cross-
 
 When generating `today.json`, ChatGPT should treat source types differently:
 
-1. Search hotlists show demand and concern.
-2. Social hotlists show emotion and diffusion speed.
-3. Video hotlists show culture, consumption, youth and creator signals.
-4. Q&A hotlists show confusion, debate and middle-class concerns.
-5. Hard-news sources verify factual seriousness.
-6. Official or institutional sources verify durable macro trends.
+1. Aggregated hotlists show broad attention distribution, but should not be treated as proof.
+2. Search hotlists show demand and concern.
+3. Social hotlists show emotion and diffusion speed.
+4. Video hotlists show culture, consumption, youth and creator signals.
+5. Q&A hotlists show confusion, debate and middle-class concerns.
+6. Hard-news sources verify factual seriousness.
+7. Official or institutional sources verify durable macro trends.
 
 Do not let entertainment dominate the radar unless the topic reveals broader cultural, consumer, social, or technological change.
 
@@ -61,6 +70,7 @@ Do not let entertainment dominate the radar unless the topic reveals broader cul
 
 A topic deserves higher attention if it appears across multiple source types, for example:
 
+- Aggregator + original platform + hard news
 - Search + social + hard news
 - Short video + e-commerce + consumer behavior
 - Q&A + workplace + education
@@ -73,6 +83,7 @@ A topic should be down-weighted if it appears only as one-platform entertainment
 
 Before generating `today.json`, sample at least:
 
+- TopHub / 今日热榜 as a first-stop aggregated hotlist entrance, when accessible
 - 3 domestic attention entrances
 - 3 international attention entrances
 - 2 hard-news or institutional references
@@ -91,5 +102,7 @@ Then compress findings into the existing 8 observation windows:
 ## Current Limitations
 
 Some sources are JS-rendered, login-gated, region-specific, or anti-bot protected. If a source cannot be fetched automatically, it can still be used as a manual browsing entrance or replaced with a nearby public source.
+
+TopHub itself may occasionally be unavailable or return server errors. If it is unavailable, use the original platform entrances directly instead of blocking the daily generation.
 
 Do not build fragile scrapers against platforms that actively block automated fetching unless a stable public API or permitted data interface is available.
